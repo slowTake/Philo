@@ -1,6 +1,6 @@
 # Compiler
 CC		:= cc
-CFLAGS	:= -g -Wall -Wextra -Werror -Iincls -Ilibft/incls
+CFLAGS	:= -g -Wall -Wextra -Werror
 
 # Directories
 OBJDIR	:= objs
@@ -9,14 +9,14 @@ LIBDIR	:= libft
 # Executable
 NAME	:= Philo
 
-# Source files — manually listed
+# Source files
 SRC := srcs/main/main.c \
 
 # Object files
 OBJ := $(patsubst srcs/%.c, $(OBJDIR)/%.o, $(SRC))
 
 # Libft
-LIBFT	:= $(LIBDIR)/libft.a
+#LIBFT	:= $(LIBDIR)/libft.a
 
 # Colors
 GREEN	:= \033[0;32m
