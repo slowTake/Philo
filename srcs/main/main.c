@@ -6,10 +6,16 @@
 /*   By: pnurmi <pnurmi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/21 13:53:45 by pnurmi            #+#    #+#             */
-/*   Updated: 2025/10/23 11:46:38 by pnurmi           ###   ########.fr       */
+/*   Updated: 2025/10/30 10:40:18 by pnurmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 void	main(int argc, char **argv)
 {
+	if (argc != 4)
+		exit();
+	else
+	{
+		philo();
+	}
 }
