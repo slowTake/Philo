@@ -1,21 +1,13 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pnurmi <pnurmi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/21 13:53:45 by pnurmi            #+#    #+#             */
-/*   Updated: 2025/11/03 10:26:40 by pnurmi           ###   ########.fr       */
+/*   Created: 2025/11/03 10:26:56 by pnurmi            #+#    #+#             */
+/*   Updated: 2025/11/03 10:57:22 by pnurmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	main(int argc, char **argv)
-{
-	if (argc != 4 || argc != 5)
-		printf("Invalid arguement");
-	else
-	{
-		parsing(argv[0], argv[1], argv[2], argv[3], argv[4]);
-	}
-}
+void	parsing(void)

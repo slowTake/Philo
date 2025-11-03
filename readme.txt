@@ -27,4 +27,7 @@ time stamp in ms Philo X died
 - philo should not die when successful
 
 no data races
+(bug that occurs when mutiple threads try to access the same mem location)
+happens while writing
+
 ============
