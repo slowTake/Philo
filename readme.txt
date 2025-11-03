@@ -21,7 +21,6 @@ time stamp in ms Philo X is sleeping
 time stamp in ms Philo X is thinking
 time stamp in ms Philo X died
 
-
 - should not overlap, mutex lock when going in and out
 - death needs to be announced within 10ms of actual death
 - philo should not die when successful
@@ -31,3 +30,5 @@ no data races
 happens while writing
 
 ============
+
+atomic booleans are bools meant to be safetly shared between threads

@@ -1,23 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pnurmi <pnurmi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/21 13:53:45 by pnurmi            #+#    #+#             */
-/*   Updated: 2025/11/03 12:27:07 by pnurmi           ###   ########.fr       */
+/*   Created: 2025/11/03 12:30:07 by pnurmi            #+#    #+#             */
+/*   Updated: 2025/11/03 12:32:31 by pnurmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	main(int argc, char **argv)
+int handle_error()
 {
-	t_data	data;
-	t_philo	philo;
 
-	parsing(argc, argv[1], data);
-	monitor;
-	cleanup;
+}
+int error_msg()
+{
+	if(error_code == 0)
+	if(error_code == )
+
+}
+
+
+
+int cleanup()
+{
+
 }
