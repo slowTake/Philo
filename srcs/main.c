@@ -6,14 +6,14 @@
 /*   By: pnurmi <pnurmi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/21 13:53:45 by pnurmi            #+#    #+#             */
-/*   Updated: 2025/10/31 12:24:15 by pnurmi           ###   ########.fr       */
+/*   Updated: 2025/11/03 10:19:20 by pnurmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 void	main(int argc, char **argv)
 {
-	if (argc != 4)
-		exit();
+	if (argc != 4 || argc != 5)
+		printf("Invalid arguement");
 	else
 	{
 		philo();
