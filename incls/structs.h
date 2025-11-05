@@ -1,8 +1,6 @@
 #ifndef STRUCTS_H
 # define SRUCTS_H
 
-# include "philo.h"
-
 typedef struct s_philo
 {
 	int				philo_id;
@@ -28,5 +26,13 @@ typedef struct s_data
 	pthread_mutex_t	data_mutex;
 	t_philo			*philosophers;
 }					t_data;
+
+typedef enum e_error_type
+{
+	E_NOT_DIGIT,
+	E_TOO_MANY_ARGS,
+	E_TOO_FEW_ARGS,
+	E_NOT_POSITIVE,
+}					t_error_type;
 
 #endif

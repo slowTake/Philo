@@ -12,13 +12,10 @@
 
 // Protypes
 
-int	isdigit(int c);
-
-typedef enum e_error_type
-{
-	E_NOT_DIGIT,
-	E_TOO_MANY_ARGS,
-	E_TOO_FEW_ARGS,
-} t_error_type;
+int		isdigit(int c);
+int		error_msg(t_error_type type);
+int		cleanup(void);
+int		input_validation(int argc, char **argv, t_data data);
+void	parsing(char **argv, t_data data);
 
 #endif

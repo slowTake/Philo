@@ -6,7 +6,7 @@
 /*   By: pnurmi <pnurmi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 12:30:07 by pnurmi            #+#    #+#             */
-/*   Updated: 2025/11/03 12:32:31 by pnurmi           ###   ########.fr       */
+/*   Updated: 2025/11/05 12:32:36 by pnurmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,14 @@ int handle_error()
 {
 
 }
-int error_msg()
+int error_msg(t_error_type type)
 {
-	if(error_code == 0)
-	if(error_code == )
-
+	if(type == E_NOT_DIGIT)
+		return(printf("Not a valid digit"));
+	if(type == E_TOO_MANY_ARGS)
+		return(printf("too many args"));
+	if(type == E_TOO_FEW_ARGS)
+		return(printf("too few args"));
 }
 
 
