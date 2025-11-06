@@ -1,23 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   02_validation.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pnurmi <pnurmi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/21 13:53:45 by pnurmi            #+#    #+#             */
-/*   Updated: 2025/11/03 12:27:07 by pnurmi           ###   ########.fr       */
+/*   Created: 2025/11/03 12:23:27 by pnurmi            #+#    #+#             */
+/*   Updated: 2025/11/06 14:52:33 by pnurmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	main(int argc, char **argv)
+int	ft_isdigit(int c)
 {
-	t_data	data;
-	t_philo	philo;
-
-	parsing(argc, argv[1], data);
-	monitor;
-	cleanup;
+	if (c >= '0' && c <= '9')
+		return (1);
+	else
+		return (0);
 }
+

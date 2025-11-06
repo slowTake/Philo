@@ -1,34 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   00_main.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pnurmi <pnurmi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/03 12:30:07 by pnurmi            #+#    #+#             */
-/*   Updated: 2025/11/05 12:32:36 by pnurmi           ###   ########.fr       */
+/*   Created: 2025/10/21 13:53:45 by pnurmi            #+#    #+#             */
+/*   Updated: 2025/11/06 14:53:14 by pnurmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int handle_error()
+void	main(int argc, char **argv)
 {
+	t_data	data;
+	t_philo	philo;
 
-}
-int error_msg(t_error_type type)
-{
-	if(type == E_NOT_DIGIT)
-		return(printf("Not a valid digit"));
-	if(type == E_TOO_MANY_ARGS)
-		return(printf("too many args"));
-	if(type == E_TOO_FEW_ARGS)
-		return(printf("too few args"));
-}
-
-
-
-int cleanup()
-{
-
+	parsing(argc, argv[1], data);
+	monitor;
+	cleanup;
 }
