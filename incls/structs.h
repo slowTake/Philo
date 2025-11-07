@@ -15,9 +15,9 @@ typedef struct s_philo
 typedef struct s_data
 {
 	int				philo_count;
-	long long		time_to_die;
-	long long		time_to_eat;
-	long long		time_to_sleep;
+	long			time_to_die;
+	long			time_to_eat;
+	long			time_to_sleep;
 	int				meals_to_eat;
 	long			start_time;
 	int				simulation_end;

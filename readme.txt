@@ -26,13 +26,8 @@ time stamp in ms Philo X died
 - philo should not die when successful
 
 no data races
-(bug that occurs when mutiple threads try to access the same mem location)
-happens while writing
-
-
-============
-
-
+(bug that occurs when mutiple threads try to access the same 
+memory location) happens while writing
 
 Data Structures
 ============
@@ -43,7 +38,7 @@ Array of philo structs(containing t_philo)
 control flag: flag to end simulation if death occurs
 
 
-
+Variables
 ============
 atomic booleans are bools meant to be safetly shared between threads
 
