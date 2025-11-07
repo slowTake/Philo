@@ -6,6 +6,7 @@ void	main(int argc, char **argv)
 	t_philo	philo;
 
 	parsing(argc, argv, data)
-	monitor;
-	cleanup;
+	execution();
+	monitor();
+	cleanup();
 }

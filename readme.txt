@@ -46,3 +46,9 @@ control flag: flag to end simulation if death occurs
 
 ============
 atomic booleans are bools meant to be safetly shared between threads
+
+
+Memory allocs
+============
+number of philos
+forks which is also number of philos

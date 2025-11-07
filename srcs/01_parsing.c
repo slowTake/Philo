@@ -6,6 +6,8 @@ int	parsing(int argc, char **argv, t_data *data)
 		return (1);
 	if (input_assignment(argc, **argv, data) == 1)
 		return (1);
+	if (alloc_memory(data) == 1)
+		return (1);
 	return (0);
 }
 
@@ -41,7 +43,7 @@ int	input_assignment(int argc, char **argv, t_data *data)
 	long	val;
 
 	val = ft_strtol(argv[1]);
-	data->philos_num = (int)val;
+	data->philo_count = (int)val;
 	val = ft_strtol(argv[2]);
 	data->time_to_die = val;
 	val = ft_strtol(argv[3]);

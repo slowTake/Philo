@@ -11,16 +11,23 @@
 // ours
 # include "structs.h"
 
-// Protypes
-
+//01_parsing
+int	parsing(int argc, char **argv, t_data data);
 int	isdigit(int c);
-int	error_msg(t_error_type type);
-int	cleanup(void);
 int	input_validation(int argc, char **argv, t_data data);
 int	input_assignment(char **argv, t_data data);
-int	parsing(int argc, char **argv, t_data data);
 int	ft_strtol(const char *str);
-int	err_msg(const char *str);
+
+//05_error
 int	err_invalid(void);
+int	err_msg(const char *str);
+int	error_msg(t_error_type type);
+
+//utility
+
+
+
+//memory
+int alloc_memory(t_data *data);
 
 #endif
