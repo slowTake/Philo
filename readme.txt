@@ -37,7 +37,6 @@ Sync mutexes to protect shared variables
 Array of philo structs(containing t_philo)
 control flag: flag to end simulation if death occurs
 
-
 Variables
 ============
 atomic booleans are bools meant to be safetly shared between threads
