@@ -18,7 +18,7 @@ int	input_validation(int argc, char **argv, t_data *data)
 	if (argc != 5 && argc != 6)
 		return (err_invalid);
 	val = ft_strtol(argv[1]);
-	if (val == -1 || val > 200)
+	if (val < 0 || val > 200)
 		return (err_msg("\nInvalid philo count."));
 	val = ft_strtol(argv[2]);
 	if (val == -1)

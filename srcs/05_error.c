@@ -17,9 +17,6 @@ int	err_msg(const char *str)
 	return (1);
 }
 
-void	err_cleanup(void)
-{
-}
 
 int	err_invalid(void)
 {
@@ -30,4 +27,25 @@ int	err_invalid(void)
 	printf("\n           Time to sleep");
 	printf("\n           Number of meals to eat (optional)");
 	return (1);
+}
+
+void	err_cleanup(void)
+{
+
+}
+
+void err_clean_fork();
+{
+
+}
+
+void cleanup_mutexes(t_data *data, int mutexes)
+{
+	int j = 0;
+
+	while(j < mutexes)
+	{
+		pthread_mutex_destroy(&data->forks[j]);
+		j++;
+	}
 }

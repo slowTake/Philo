@@ -5,8 +5,9 @@ void	main(int argc, char **argv)
 	t_data	data;
 	t_philo	philo;
 
-	parsing(argc, argv, data)
+	parsing(argc, argv, data);
 	execution();
+	init_main();
 	monitor();
 	cleanup();
 }
