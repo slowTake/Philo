@@ -34,7 +34,7 @@ void	err_cleanup(void)
 
 }
 
-void err_clean_fork();
+void err_clean_fork()
 {
 
 }

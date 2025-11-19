@@ -4,7 +4,6 @@ locked and unlocked when entering and leaving
 
 cap 200
 
-
 Args:
 =============
 number of philos
@@ -21,9 +20,9 @@ time stamp in ms Philo X is sleeping
 time stamp in ms Philo X is thinking
 time stamp in ms Philo X died
 
-- should not overlap, mutex lock when going in and out
-- death needs to be announced within 10ms of actual death
-- philo should not die when successful
+-should not overlap, mutex lock when going in and out
+-death needs to be announced within 10ms of actual death
+-philo should not die when successful
 
 no data races
 (bug that occurs when mutiple threads try to access the same 
@@ -41,8 +40,11 @@ Variables
 ============
 atomic booleans are bools meant to be safetly shared between threads
 
-
 Memory allocs
 ============
 number of philos
 forks which is also number of philos
+
+Monitor
+============
+run in the parent thread to not occupy threads/resources

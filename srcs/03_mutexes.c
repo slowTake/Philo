@@ -1,5 +1,13 @@
 #include "philo.h"
 
+int	init_main(t_data *data)
+{
+	if (init_fork(data))
+		return (-1); // cleanup
+	if (init_ctrl_mutexes(data))
+		return (-1); // cleanup
+}
+
 int	init_fork(t_data *data)
 {
 	int	i;
@@ -23,13 +31,6 @@ int	init_ctrl_mutexes(t_data *data)
 		return (-1); // cleanup
 }
 
-int	init_main(t_data *data)
-{
-	if (init_fork(data))
-		return (-1); // cleanup
-	if (init_ctrl_mutexes(data))
-		return (-1); // cleanup
-}
 
 int init_philo_data(t_data *data)
 {

@@ -2,12 +2,12 @@
 
 void	main(int argc, char **argv)
 {
-	t_data	data;
+	t_data	*data;
 	t_philo	philo;
 
-	parsing(argc, argv, data);
-	execution();
+	parsing(argc, argv, *data);
 	init_main();
+	execution();
 	monitor();
-	cleanup();
+	cleanup_data(data);
 }
