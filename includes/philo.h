@@ -26,11 +26,11 @@ int	error_msg(t_error_type type);
 
 // 05_memory
 int	alloc_memory(t_data *data);
+
+// 06_cleanup
 void cleanup_philos(t_data *data);
 void cleanup_mutexes(t_data *data);
-void cleanup_threads(t_data *data);
+void cleanup_threads(t_data *data, int i);
 void cleanup_data(t_data *data);
-
-// utility
 
 #endif

@@ -43,14 +43,14 @@ int	input_assignment(int argc, char **argv, t_data *data)
 	long	val;
 
 	val = ft_strtol(argv[1]);
-	data->philo_count = (int)val;
+	data->philo_count = (int)val; //ph count
 	val = ft_strtol(argv[2]);
-	data->time_to_die = val;
+	data->time_to_die = val; //time to die
 	val = ft_strtol(argv[3]);
-	data->time_to_eat = val;
+	data->time_to_eat = val; //time to eat
 	val = ft_strtol(argv[4]);
-	data->time_to_sleep = val;
-	data->meals_to_eat = -1;
+	data->time_to_sleep = val; // time to sleep
+	data->meals_to_eat = -1; // meals to eat
 	if (argc == 6)
 	{
 		val = ft_strtol(argv[5]);
