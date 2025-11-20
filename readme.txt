@@ -48,3 +48,33 @@ forks which is also number of philos
 Monitor
 ============
 run in the parent thread to not occupy threads/resources
+
+t_data
+============
+philo_num
+time_to_die
+time_to_eat
+time_to_sleep
+meal_limit
+
+forks
+philosphers
+start time
+stop flag
+finished eating_count
+
+print mutex
+data mutex
+
+philo structs
+============
+int id
+thread_id
+
+left_fork
+right_fork
+
+meals_eaten
+last_meal_time
+
+data

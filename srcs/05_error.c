@@ -13,7 +13,7 @@ int	error_msg(t_error_type type)
 
 int	err_msg(const char *str)
 {
-	printf("%s", *str);
+	printf("%s\n", str);
 	return (1);
 }
 

@@ -1,12 +1,13 @@
 #include "philo.h"
 
-void	main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-	t_data	*data;
-	t_philo	philo;
+	t_data	data;
 
-	parsing(argc, argv, *data);
-	execution(); // init main, 
-	monitor();
-	cleanup_data(data);
+	if (parsing(argc, argv, &data) != 0)
+		return (1);
+	execution_main(&data);
+	// monitor();
+	cleanup_data(&data);
+	return (0);
 }

@@ -23,7 +23,6 @@ int	init_ctrl_mutexes(t_data *data)
 		return (-1); // cleanup
 }
 
-
 int init_philo_data(t_data *data)
 {
 	int i = 0;

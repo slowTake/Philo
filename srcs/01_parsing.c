@@ -2,9 +2,9 @@
 
 int	parsing(int argc, char **argv, t_data *data)
 {
-	if (input_validation(argc, **argv, data) == 1)
+	if (input_validation(argc, argv, data) == 1)
 		return (1);
-	if (input_assignment(argc, **argv, data) == 1)
+	if (input_assignment(argc, argv, data) == 1)
 		return (1);
 	if (alloc_memory(data) == 1)
 		return (1);
