@@ -12,7 +12,7 @@
 # include "structs.h"
 
 // 01_parsing
-int	parsing(int argc, char **argv, t_data data);
+int	parsing(int argc, char **argv, t_data *data);
 int	isdigit(int c);
 int	input_validation(int argc, char **argv, t_data data);
 int	input_assignment(char **argv, t_data data);
@@ -29,7 +29,7 @@ int	alloc_memory(t_data *data);
 
 // 06_cleanup
 void cleanup_philos(t_data *data);
-void cleanup_mutexes(t_data *data);
+void cleanup_mutexes(t_data *data, int mutexes);
 void cleanup_threads(t_data *data, int i);
 void cleanup_data(t_data *data);
 
