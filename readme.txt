@@ -78,3 +78,17 @@ meals_eaten
 last_meal_time
 
 data
+
+
+
+
+
+
+
+
+
+==============
+atomic
+if philo full
+last eat time
+philo count

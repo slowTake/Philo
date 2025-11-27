@@ -10,7 +10,7 @@ int	init_fork(t_data *data)
 		if (pthread_mutex_init(&data->forks[i], NULL) != 0)
 		{
 			cleanup_mutexes(data, i);
-			return (-1);
+			return (1);
 		}
 		i++;
 	}
@@ -20,10 +20,14 @@ int	init_fork(t_data *data)
 int	init_ctrl_mutexes(t_data *data)
 {
 	if (pthread_mutex_init(&data->print_mutex, NULL) != 0)
+		return (1);
+	if (pthread_mutex_init(&data->data_mutex, NULL) != 0)
 	{
+		pthread_mutex_destroy(&data->print_mutex);
 		cleanup_mutexes(data, data->philo_count);
-		return (-1);
+		return (1);
 	}
+	return(0);
 }
 
 int init_philo_data(t_data *data)
