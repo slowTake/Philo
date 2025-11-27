@@ -18,6 +18,9 @@ int	input_validation(int argc, char **argv, t_data data);
 int	input_assignment(char **argv, t_data data);
 int	ft_strtol(const char *str);
 
+// 02 Execution
+int init_resources(t_data *data);
+
 // 04_error
 int	err_invalid(void);
 int	err_msg(const char *str);

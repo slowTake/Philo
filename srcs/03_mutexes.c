@@ -24,7 +24,7 @@ int	init_ctrl_mutexes(t_data *data)
 	if (pthread_mutex_init(&data->data_mutex, NULL) != 0)
 	{
 		pthread_mutex_destroy(&data->print_mutex);
-		cleanup_mutexes(data, data->philo_count);
+		
 		return (1);
 	}
 	return(0);

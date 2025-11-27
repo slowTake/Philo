@@ -9,12 +9,15 @@ int	execution_main(t_data *data)
 	return (0);
 }
 
-int	init_main(t_data *data)
+int	init_resources(t_data *data)
 {
 	if (init_fork(data) == 1) // 
 		return (1);
 	if (init_ctrl_mutexes(data) == 1) // cleaned if fails
+	{
+		cleanup_mutexes(data, data->philo_count);	
 		return (1);
+	}
 	if (init_philo_data(data) == 1); // No cleanup
 		return (1);
 	if (init_threads(data) == 1); // cleaned if fails
