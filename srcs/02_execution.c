@@ -48,7 +48,7 @@ int monitor(t_data *data)
 
 	while(i < data->philo_count)
 	{
-
+		
 	}
 }
 
