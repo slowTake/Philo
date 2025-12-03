@@ -21,6 +21,11 @@ int	ft_strtol(const char *str);
 // 02 Execution
 int init_resources(t_data *data);
 
+// 03_mutexes
+int init_fork(t_data *data);
+int init_ctrl_mutexes(t_data *data);
+int init_philo_data(t_data *data);
+
 // 04_error
 int	err_invalid(void);
 int	err_msg(const char *str);
