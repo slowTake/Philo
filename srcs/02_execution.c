@@ -4,8 +4,11 @@ int	execution_main(t_data *data)
 {
 	if (init_resources(data) != 0)
 		return (1);
-	if (monitor(data) != 0)
+	if (init_threads(data) != 0)
 		return (1);
+	while(data->stop_flag == 0)
+		monitor(data);
+	cleanup_all(data);
 	return (0);
 }
 
@@ -15,13 +18,11 @@ int	init_resources(t_data *data)
 		return (1);
 	if (init_ctrl_mutexes(data) == 1) // cleaned if fails
 	{
-		cleanup_mutexes(data, data->philo_count);	
+		cleanup_mutexes(data, data->philo_count);
 		return (1);
 	}
 	if (init_philo_data(data) == 1) // No cleanup
 		return (1);
-	// if (init_threads(data) == 1) // cleaned if fails
-	// 	return (1); << move init thread to execution
 	return (0);
 }
 
@@ -48,7 +49,6 @@ int monitor(t_data *data)
 
 	while(i < data->philo_count)
 	{
-
+		
 	}
 }
-

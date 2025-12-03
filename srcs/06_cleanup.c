@@ -27,7 +27,7 @@ void cleanup_main(t_data *data)
 
 void cleanup_threads(t_data *data, int i)
 {
-	while (i >= 0)	
+	while (i >= 0)
 	{
 		pthread_join(data->philosophers[i].thread_id, NULL);
 		i--;

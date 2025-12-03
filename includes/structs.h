@@ -20,7 +20,7 @@ typedef struct s_data
 	long			time_to_sleep;
 	int				meals_to_eat;
 	long			start_time;
-	int				simulation_end;
+	int				stop_flag;
 	pthread_mutex_t	*forks;
 	pthread_mutex_t	print_mutex;
 	pthread_mutex_t	data_mutex;

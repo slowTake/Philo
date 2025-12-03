@@ -19,7 +19,10 @@ int	input_assignment(char **argv, t_data data);
 int	ft_strtol(const char *str);
 
 // 02 Execution
+int execution_main(t_data *data);
 int init_resources(t_data *data);
+int init_threads(t_data *data);
+int monitor(t_data *data);
 
 // 03_mutexes
 int init_fork(t_data *data);
@@ -30,7 +33,6 @@ int init_philo_data(t_data *data);
 int	err_invalid(void);
 int	err_msg(const char *str);
 int	error_msg(t_error_type type);
-
 
 // 05_memory
 int	alloc_memory(t_data *data);
