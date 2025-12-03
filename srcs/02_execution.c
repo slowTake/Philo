@@ -47,8 +47,9 @@ int monitor(t_data *data)
 {
 	int i = 0;
 
+	//check for meal limit
 	while(i < data->philo_count)
 	{
-		
+
 	}
 }
