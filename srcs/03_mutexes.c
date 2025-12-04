@@ -36,12 +36,12 @@ int init_philo_data(t_data *data)
 
 	while(i < data->philo_count)
 	{
-		data->philosophers[i].philo_id = i + 1;
+		data->philosophers[i].p_id = i + 1;
 		data->philosophers[i].data = data;
 		data->philosophers[i].meals_eaten = 0;
 		data->philosophers[i].left_fork = &data->forks[i];
 		data->philosophers[i].right_fork = &data->forks[(i + 1) % data->philo_count];
-		data->philosophers[i].thread_id = 0;
+		data->philosophers[i].t_id = 0;
 		i++;
 	}
 	return(0);

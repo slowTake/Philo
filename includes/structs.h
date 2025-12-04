@@ -3,10 +3,10 @@
 
 typedef struct s_philo
 {
-	int				philo_id;
-	pthread_t		thread_id;
+	int				p_id;
+	pthread_t		t_id;
 	int				meals_eaten;
-	long long		last_meal;
+	long long		last_meal_time;
 	pthread_mutex_t	*left_fork;
 	pthread_mutex_t	*right_fork;
 	struct s_data	*data;

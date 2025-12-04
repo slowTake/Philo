@@ -43,13 +43,32 @@ int	init_threads(t_data *data)
 	return(0);
 }
 
-int monitor(t_data *data)
+void monitor(t_data *data)
 {
-	int i = 0;
-
-	//check for meal limit
-	while(i < data->philo_count)
+	int i;
+	
+	while(data->stop_flag == 0)
 	{
-
+		i = 0;
+		while(i < data->philo_count)
+		{
+			pthread_mutex_lock(&data->data_mutex);
+			long time_elapsed = get_current_time_ms() - data->philosophers[i].last_meal_time;
+			if(time_elapsed > data->time_to_die)
+			{
+				data->stop_flag = 1;
+				pthread_mutex_unlock(&data->data_mutex);
+				printf(data, data->philosophers[i].p_id, "dedge");
+				return;
+			}
+				pthread_mutex_unlock(&data->data_mutex);			
+				i++;
+		}
+		usleep(1000);
 	}
+}
+
+void print_stats(t_data *data)
+{
+	
 }
