@@ -22,7 +22,7 @@ int	ft_strtol(const char *str);
 int execution_main(t_data *data);
 int init_resources(t_data *data);
 int init_threads(t_data *data);
-int monitor(t_data *data);
+void monitor(t_data *data);
 
 // 03_mutexes
 int init_fork(t_data *data);
@@ -42,5 +42,9 @@ void cleanup_philos(t_data *data);
 void cleanup_mutexes(t_data *data, int mutexes);
 void cleanup_threads(t_data *data, int i);
 void cleanup_data(t_data *data);
+
+// 07_utils
+long long get_time_ms(void);
+int print_status(t_data *data, int philo_id, const char *status);
 
 #endif
