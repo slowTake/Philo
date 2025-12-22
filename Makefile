@@ -10,7 +10,7 @@ LIBDIR	:= libft
 NAME	:= Philo
 
 # Source files
-SRC := srcs/main/main.c \
+SRC := srcs/00_main.c \
 
 # Object files
 OBJ := $(patsubst srcs/%.c, $(OBJDIR)/%.o, $(SRC))

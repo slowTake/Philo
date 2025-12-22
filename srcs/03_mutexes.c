@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   03_mutexes.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pnurmi <pnurmi@student.hive.fi>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/12/22 11:08:55 by pnurmi            #+#    #+#             */
+/*   Updated: 2025/12/22 11:08:56 by pnurmi           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "philo.h"
 
 int	init_fork(t_data *data)
@@ -14,7 +26,7 @@ int	init_fork(t_data *data)
 		}
 		i++;
 	}
-	return(0);
+	return (0);
 }
 
 int	init_ctrl_mutexes(t_data *data)
@@ -24,25 +36,26 @@ int	init_ctrl_mutexes(t_data *data)
 	if (pthread_mutex_init(&data->data_mutex, NULL) != 0)
 	{
 		pthread_mutex_destroy(&data->print_mutex);
-		
 		return (1);
 	}
-	return(0);
+	return (0);
 }
 
-int init_philo_data(t_data *data)
+int	init_philo_data(t_data *data)
 {
-	int i = 0;
+	int	i;
 
-	while(i < data->philo_count)
+	i = 0;
+	while (i < data->philo_count)
 	{
 		data->philosophers[i].p_id = i + 1;
 		data->philosophers[i].data = data;
 		data->philosophers[i].meals_eaten = 0;
 		data->philosophers[i].left_fork = &data->forks[i];
-		data->philosophers[i].right_fork = &data->forks[(i + 1) % data->philo_count];
+		data->philosophers[i].right_fork = &data->forks[(i + 1)
+			% data->philo_count];
 		data->philosophers[i].t_id = 0;
 		i++;
 	}
-	return(0);
+	return (0);
 }

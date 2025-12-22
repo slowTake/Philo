@@ -25,7 +25,7 @@ time stamp in ms Philo X died
 -philo should not die when successful
 
 no data races
-(bug that occurs when mutiple threads try to access the same 
+(bug that occurs when multiple threads try to access the same 
 memory location) happens while writing
 
 Data Structures
@@ -78,13 +78,6 @@ meals_eaten
 last_meal_time
 
 data
-
-
-
-
-
-
-
 
 
 ==============

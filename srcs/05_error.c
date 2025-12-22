@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   05_error.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pnurmi <pnurmi@student.hive.fi>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/12/22 11:09:00 by pnurmi            #+#    #+#             */
+/*   Updated: 2025/12/22 11:09:03 by pnurmi           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "philo.h"
 
 int	error_msg(t_error_type type)
@@ -8,7 +20,7 @@ int	error_msg(t_error_type type)
 		printf("too many args");
 	if (type == E_TOO_FEW_ARGS)
 		printf("too few args");
-	return(1);
+	return (1);
 }
 
 int	err_msg(const char *str)
@@ -16,7 +28,6 @@ int	err_msg(const char *str)
 	printf("%s\n", str);
 	return (1);
 }
-
 
 int	err_invalid(void)
 {
@@ -31,19 +42,18 @@ int	err_invalid(void)
 
 void	err_cleanup(void)
 {
-
 }
 
-void err_clean_fork()
+void	err_clean_fork(void)
 {
-
 }
 
-void cleanup_mutexes(t_data *data, int mutexes)
+void	cleanup_mutexes(t_data *data, int mutexes)
 {
-	int j = 0;
+	int	j;
 
-	while(j < mutexes)
+	j = 0;
+	while (j < mutexes)
 	{
 		pthread_mutex_destroy(&data->forks[j]);
 		j++;

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   01_parsing.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pnurmi <pnurmi@student.hive.fi>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/12/22 11:08:51 by pnurmi            #+#    #+#             */
+/*   Updated: 2025/12/22 11:09:41 by pnurmi           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "philo.h"
 
 int	parsing(int argc, char **argv, t_data *data)
@@ -15,8 +27,6 @@ int	input_validation(int argc, char **argv, t_data *data)
 {
 	long	val;
 
-	// if (argc != 5 && argc != 6)
-	// 	return (err_invalid);
 	val = ft_strtol(argv[1]);
 	if (val < -1 || val > 200)
 		return (err_msg("\nInvalid philo count."));
@@ -43,14 +53,14 @@ int	input_assignment(int argc, char **argv, t_data *data)
 	long	val;
 
 	val = ft_strtol(argv[1]);
-	data->philo_count = (int)val; //ph count
+	data->philo_count = (int)val;
 	val = ft_strtol(argv[2]);
-	data->time_to_die = val; //time to die
+	data->time_to_die = val;
 	val = ft_strtol(argv[3]);
-	data->time_to_eat = val; //time to eat
+	data->time_to_eat = val;
 	val = ft_strtol(argv[4]);
-	data->time_to_sleep = val; // time to sleep
-	data->meals_to_eat = -1; // meals to eat
+	data->time_to_sleep = val;
+	data->meals_to_eat = -1;
 	if (argc == 6)
 	{
 		val = ft_strtol(argv[5]);
