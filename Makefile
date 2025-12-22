@@ -1,37 +1,36 @@
 # Compiler
-CC		:= cc
-CFLAGS	:= -g -Wall -Wextra -Werror
+CC      := cc
+CFLAGS  := -g -Wall -Wextra -Werror -Iincludes -pthread -fsanitize=thread
 
 # Directories
-OBJDIR	:= objs
-LIBDIR	:= libft
+OBJDIR  := objs
 
 # Executable
-NAME	:= Philo
+NAME    := philo
 
 # Source files
-SRC := srcs/00_main.c \
+SRC     := srcs/00_main.c \
+           srcs/01_parsing.c \
+           srcs/02_execution.c \
+           srcs/03_mutexes.c \
+           srcs/04_memory.c \
+           srcs/05_error.c \
+           srcs/06_cleanup.c \
+           srcs/07_utils.c 
 
 # Object files
-OBJ := $(patsubst srcs/%.c, $(OBJDIR)/%.o, $(SRC))
-
-# Libft
-#LIBFT	:= $(LIBDIR)/libft.a
+OBJ     := $(SRC:srcs/%.c=$(OBJDIR)/%.o)
 
 # Colors
-GREEN	:= \033[0;32m
-CYAN	:= \033[0;36m
-YELLOW	:= \033[1;33m
-RESET	:= \033[0m
+GREEN   := \033[0;32m
+CYAN    := \033[0;36m
+YELLOW  := \033[1;33m
+RESET   := \033[0m
 
-# Default rule
-.DEFAULT_GOAL := all
-
-# Build rules
 all: $(NAME)
 
-$(NAME): $(OBJ) $(LIBFT)
-	@$(CC) $(CFLAGS) -o $@ $^ -lreadline
+$(NAME): $(OBJ)
+	@$(CC) $(CFLAGS) -o $@ $^
 	@echo "$(CYAN)🚀 Built: $@$(RESET)"
 
 $(OBJDIR)/%.o: srcs/%.c
@@ -39,18 +38,13 @@ $(OBJDIR)/%.o: srcs/%.c
 	@$(CC) $(CFLAGS) -c $< -o $@
 	@echo "$(GREEN)🛠️  Compiled:$(RESET) $<"
 
-$(LIBFT):
-	@make -C libft
-
 clean:
 	@rm -rf $(OBJDIR)
-	@make -C libft clean
-	@echo "$(YELLOW)🧹 Cleaned MINISHELL object files.$(RESET)"
+	@echo "$(YELLOW)🧹 Cleaned Philo object files.$(RESET)"
 
 fclean: clean
 	@rm -f $(NAME)
-	@make -C libft fclean
-	@echo "$(YELLOW)🗑️  Removed MINISHELL binary.$(RESET)"
+	@echo "$(YELLOW)🗑️  Removed Philo binary.$(RESET)"
 
 re: fclean all
 

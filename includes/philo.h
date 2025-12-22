@@ -6,7 +6,7 @@
 /*   By: pnurmi <pnurmi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/22 11:11:01 by pnurmi            #+#    #+#             */
-/*   Updated: 2025/12/22 11:11:04 by pnurmi           ###   ########.fr       */
+/*   Updated: 2025/12/22 11:29:35 by pnurmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@
 // 01_parsing
 int			parsing(int argc, char **argv, t_data *data);
 int			isdigit(int c);
-int			input_validation(int argc, char **argv, t_data data);
-int			input_assignment(char **argv, t_data data);
-int			ft_strtol(const char *str);
+int			input_validation(int argc, char **argv);
+int			input_assignment(int argc, char **argv, t_data *data);
+long			ft_strtol(const char *str);
 
 // 02 Execution
 int			execution_main(t_data *data);

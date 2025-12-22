@@ -6,12 +6,12 @@
 /*   By: pnurmi <pnurmi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/22 11:11:05 by pnurmi            #+#    #+#             */
-/*   Updated: 2025/12/22 11:11:06 by pnurmi           ###   ########.fr       */
+/*   Updated: 2025/12/22 11:26:30 by pnurmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCTS_H
-# define SRUCTS_H
+# define STRUCTS_H
 
 typedef struct s_philo
 {

@@ -6,7 +6,7 @@
 /*   By: pnurmi <pnurmi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/22 11:08:51 by pnurmi            #+#    #+#             */
-/*   Updated: 2025/12/22 11:09:41 by pnurmi           ###   ########.fr       */
+/*   Updated: 2025/12/22 11:29:13 by pnurmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	parsing(int argc, char **argv, t_data *data)
 {
-	if (input_validation(argc, argv, data) == 1)
+	if (input_validation(argc, argv) == 1)
 		return (1);
 	if (input_assignment(argc, argv, data) == 1)
 		return (1);
@@ -23,7 +23,7 @@ int	parsing(int argc, char **argv, t_data *data)
 	return (0);
 }
 
-int	input_validation(int argc, char **argv, t_data *data)
+int	input_validation(int argc, char **argv)
 {
 	long	val;
 
