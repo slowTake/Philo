@@ -29,17 +29,17 @@ int	execution_main(t_data *data)
 {
 	if (init_resources(data) != 0)
 	{
-		cleanup_all(data);
+		cleanup_data(data);
 		return (1);
 	}
 	if (init_threads(data) != 0)
 	{
-		cleanup_all(data);
+		cleanup_data(data);
 		return (1);
 	}
 	monitor(data);
 	wait_for_threads(data);
-	cleanup_all(data);
+	cleanup_data(data);
 	return (0);
 }
 
@@ -93,9 +93,27 @@ void	monitor(t_data *data)
 			if (time_elapsed > data->time_to_die)
 			{
 				pthread_mutex_unlock(&data->data_mutex);
-				print_status(data, data->philosophers[i].p_id, "dedge");
+				print_status(data, data->philosophers[i].p_id, "died");
 				data->stop_flag = 1;
 				return ;
+			}
+			if (data->meals_to_eat > 0 && data->philosophers[i].meals_eaten >= data->meals_to_eat)
+			{
+				// check if all have eaten enough
+				int all_eaten = 1;
+				int j = 0;
+				while (j < data->philo_count)
+				{
+					if (data->philosophers[j].meals_eaten < data->meals_to_eat)
+						all_eaten = 0;
+					j++;
+				}
+				if (all_eaten)
+				{
+					data->stop_flag = 1;
+					pthread_mutex_unlock(&data->data_mutex);
+					return ;
+				}
 			}
 			pthread_mutex_unlock(&data->data_mutex);
 			i++;
@@ -110,7 +128,7 @@ void	take_forks(t_philo *philo)
 	{
 		pthread_mutex_lock(philo->left_fork);
 		print_status(philo->data, philo->p_id, "has taken a fork");
-		while (simulation_should_stop(philo->data) == 0)
+		while (simulation_finished(philo->data) == 0)
 			usleep(100);
 		pthread_mutex_unlock(philo->left_fork);
 		return ;
@@ -149,6 +167,7 @@ void	update_last_meal_time(t_philo *philo)
 {
 	pthread_mutex_lock(&philo->data->data_mutex);
 	philo->last_meal_time = get_current_time_ms();
+	philo->meals_eaten++;
 	pthread_mutex_unlock(&philo->data->data_mutex);
 }
 
@@ -161,10 +180,12 @@ void	*philo_routine(void *arg)
 	data = philo->data;
 	if (philo->p_id % 2 == 0)
 		usleep(1500);
-	while (data->stop_flag == 0)
+	while (simulation_finished(data) == 0)
 	{
 		print_status(data, philo->p_id, "is thinking");
 		take_forks(philo);
+		if (simulation_finished(data) != 0)
+			break;
 		print_status(data, philo->p_id, "is eating");
 		update_last_meal_time(philo);
 		usleep(data->time_to_eat * 1000);

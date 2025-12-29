@@ -12,7 +12,7 @@
 
 #include "philo.h"
 
-long long	get_time_ms(void)
+long long	get_current_time_ms(void)
 {
 	struct timeval	tv;
 	long long		time_in_ms;

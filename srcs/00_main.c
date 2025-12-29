@@ -21,6 +21,5 @@ int	main(int argc, char **argv)
 	if (parsing(argc, argv, &data) != 0)
 		return (1);
 	execution_main(&data);
-	cleanup_data(&data);
 	return (0);
 }

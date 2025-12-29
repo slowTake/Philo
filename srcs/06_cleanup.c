@@ -31,7 +31,7 @@ void	cleanup_mutexes(t_data *data, int mutexes)
 	pthread_mutex_destroy(&data->print_mutex);
 }
 
-void	cleanup_main(t_data *data)
+void	cleanup_data(t_data *data)
 {
 	cleanup_philos(data);
 	cleanup_mutexes(data, data->philo_count);

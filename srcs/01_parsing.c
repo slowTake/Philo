@@ -61,6 +61,7 @@ int	input_assignment(int argc, char **argv, t_data *data)
 	val = ft_strtol(argv[4]);
 	data->time_to_sleep = val;
 	data->meals_to_eat = -1;
+	data->stop_flag = 0;
 	if (argc == 6)
 	{
 		val = ft_strtol(argv[5]);

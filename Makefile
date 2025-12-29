@@ -1,6 +1,6 @@
 # Compiler
 CC      := cc
-CFLAGS  := -g -Wall -Wextra -Werror -Iincludes -pthread -fsanitize=thread
+CFLAGS  := -g -Wall -Wextra -Werror -Iincludes -pthread
 
 # Directories
 OBJDIR  := objs

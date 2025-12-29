@@ -47,15 +47,3 @@ void	err_cleanup(void)
 void	err_clean_fork(void)
 {
 }
-
-void	cleanup_mutexes(t_data *data, int mutexes)
-{
-	int	j;
-
-	j = 0;
-	while (j < mutexes)
-	{
-		pthread_mutex_destroy(&data->forks[j]);
-		j++;
-	}
-}
