@@ -6,7 +6,7 @@
 /*   By: pnurmi <pnurmi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/22 11:08:53 by pnurmi            #+#    #+#             */
-/*   Updated: 2025/12/22 11:12:05 by pnurmi           ###   ########.fr       */
+/*   Updated: 2025/12/29 11:34:47 by pnurmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,8 +88,7 @@ void	monitor(t_data *data)
 		while (i < data->philo_count)
 		{
 			pthread_mutex_lock(&data->data_mutex);
-			time_elapsed = get_current_time_ms()
-				- data->philosophers[i].last_meal_time;
+			time_elapsed = get_current_time_ms() - data->philosophers[i].last_meal_time;
 			if (time_elapsed > data->time_to_die)
 			{
 				pthread_mutex_unlock(&data->data_mutex);

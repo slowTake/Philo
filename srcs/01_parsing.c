@@ -6,11 +6,12 @@
 /*   By: pnurmi <pnurmi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/22 11:08:51 by pnurmi            #+#    #+#             */
-/*   Updated: 2025/12/22 11:29:13 by pnurmi           ###   ########.fr       */
+/*   Updated: 2025/12/29 11:13:58 by pnurmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+#include <stdio.h>
 
 int	parsing(int argc, char **argv, t_data *data)
 {
@@ -77,6 +78,7 @@ long	ft_strtol(const char *str)
 
 	res = 0;
 	i = 0;
+
 	while (str[i] == ' ' || str[i] == '\t')
 		i++;
 	if (str[i] == '+')
@@ -87,7 +89,7 @@ long	ft_strtol(const char *str)
 	{
 		if (str[i] < '0' || str[i] > '9')
 			return (-1);
-		if (res > (LONG_MAX - (str[i] - '0')) / 10)
+		if (res > (INT_MAX - (str[i] - '0')) / 10)
 			return (-1);
 		res = (res * 10) + (str[i] - '0');
 		i++;
