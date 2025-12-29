@@ -6,11 +6,21 @@
 /*   By: pnurmi <pnurmi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/22 11:08:44 by pnurmi            #+#    #+#             */
-/*   Updated: 2025/12/22 11:09:07 by pnurmi           ###   ########.fr       */
+/*   Updated: 2025/12/29 15:12:11 by pnurmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+static int	ft_strcmp(const char *s1, const char *s2)
+{
+	size_t	i;
+
+	i = 0;
+	while (s1[i] && s2[i] && s1[i] == s2[i])
+		i++;
+	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+}
 
 long long	get_current_time_ms(void)
 {
@@ -25,19 +35,17 @@ long long	get_current_time_ms(void)
 
 int	print_status(t_data *data, int philo_id, const char *status)
 {
-	long	timestamp;
-
 	pthread_mutex_lock(&data->print_mutex);
 	pthread_mutex_lock(&data->data_mutex);
-	if (data->stop_flag != 0 && status[0] != 'd')
+	if (data->stop_flag && ft_strcmp(status, "died") != 0)
 	{
 		pthread_mutex_unlock(&data->data_mutex);
 		pthread_mutex_unlock(&data->print_mutex);
 		return (1);
 	}
 	pthread_mutex_unlock(&data->data_mutex);
-	timestamp = get_current_time_ms() - data->start_time;
-	printf("%ld %d %s\n", timestamp, philo_id, status);
+	printf("%lld %d %s\n", get_current_time_ms() - data->start_time, philo_id,
+		status);
 	pthread_mutex_unlock(&data->print_mutex);
 	return (0);
 }

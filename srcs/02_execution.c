@@ -6,7 +6,7 @@
 /*   By: pnurmi <pnurmi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/22 11:08:53 by pnurmi            #+#    #+#             */
-/*   Updated: 2025/12/29 11:34:47 by pnurmi           ###   ########.fr       */
+/*   Updated: 2025/12/29 15:04:38 by pnurmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,42 +79,36 @@ int	init_threads(t_data *data)
 
 void	monitor(t_data *data)
 {
-	int		i;
-	long	time_elapsed;
+	int	i;
+	int	finished_meals;
 
-	while (data->stop_flag == 0)
+	while (1)
 	{
+		finished_meals = 0;
 		i = 0;
 		while (i < data->philo_count)
 		{
 			pthread_mutex_lock(&data->data_mutex);
-			time_elapsed = get_current_time_ms() - data->philosophers[i].last_meal_time;
-			if (time_elapsed > data->time_to_die)
+			if (get_current_time_ms()
+				- data->philosophers[i].last_meal_time > data->time_to_die)
 			{
+				data->stop_flag = 1;
 				pthread_mutex_unlock(&data->data_mutex);
 				print_status(data, data->philosophers[i].p_id, "died");
-				data->stop_flag = 1;
 				return ;
 			}
-			if (data->meals_to_eat > 0 && data->philosophers[i].meals_eaten >= data->meals_to_eat)
-			{
-				int all_eaten = 1;
-				int j = 0;
-				while (j < data->philo_count)
-				{
-					if (data->philosophers[j].meals_eaten < data->meals_to_eat)
-						all_eaten = 0;
-					j++;
-				}
-				if (all_eaten)
-				{
-					data->stop_flag = 1;
-					pthread_mutex_unlock(&data->data_mutex);
-					return ;
-				}
-			}
+			if (data->meals_to_eat > 0
+				&& data->philosophers[i].meals_eaten >= data->meals_to_eat)
+				finished_meals++;
 			pthread_mutex_unlock(&data->data_mutex);
 			i++;
+		}
+		if (data->meals_to_eat > 0 && finished_meals == data->philo_count)
+		{
+			pthread_mutex_lock(&data->data_mutex);
+			data->stop_flag = 1;
+			pthread_mutex_unlock(&data->data_mutex);
+			return ;
 		}
 		usleep(1000);
 	}
@@ -181,9 +175,11 @@ void	*philo_routine(void *arg)
 	while (simulation_finished(data) == 0)
 	{
 		print_status(data, philo->p_id, "is thinking");
+		if (data->philo_count % 2 != 0)
+			usleep(500);
 		take_forks(philo);
 		if (simulation_finished(data) != 0)
-			break;
+			break ;
 		print_status(data, philo->p_id, "is eating");
 		update_last_meal_time(philo);
 		usleep(data->time_to_eat * 1000);
