@@ -99,7 +99,6 @@ void	monitor(t_data *data)
 			}
 			if (data->meals_to_eat > 0 && data->philosophers[i].meals_eaten >= data->meals_to_eat)
 			{
-				// check if all have eaten enough
 				int all_eaten = 1;
 				int j = 0;
 				while (j < data->philo_count)

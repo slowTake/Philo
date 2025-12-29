@@ -12,17 +12,6 @@
 
 #include "philo.h"
 
-int	error_msg(t_error_type type)
-{
-	if (type == E_NOT_DIGIT)
-		printf("Not a valid digit");
-	if (type == E_TOO_MANY_ARGS)
-		printf("too many args");
-	if (type == E_TOO_FEW_ARGS)
-		printf("too few args");
-	return (1);
-}
-
 int	err_msg(const char *str)
 {
 	printf("%s\n", str);
@@ -40,10 +29,3 @@ int	err_invalid(void)
 	return (1);
 }
 
-void	err_cleanup(void)
-{
-}
-
-void	err_clean_fork(void)
-{
-}

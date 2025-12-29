@@ -25,7 +25,6 @@
 
 // 01_parsing
 int			parsing(int argc, char **argv, t_data *data);
-int			isdigit(int c);
 int			input_validation(int argc, char **argv);
 int			input_assignment(int argc, char **argv, t_data *data);
 long			ft_strtol(const char *str);
@@ -45,7 +44,6 @@ int			init_philo_data(t_data *data);
 // 04_error
 int			err_invalid(void);
 int			err_msg(const char *str);
-int			error_msg(t_error_type type);
 
 // 05_memory
 int			alloc_memory(t_data *data);

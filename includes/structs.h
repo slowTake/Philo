@@ -39,12 +39,6 @@ typedef struct s_data
 	t_philo			*philosophers;
 }					t_data;
 
-typedef enum e_error_type
-{
-	E_NOT_DIGIT,
-	E_TOO_MANY_ARGS,
-	E_TOO_FEW_ARGS,
-	E_NOT_POSITIVE,
-}					t_error_type;
+/* error types removed */
 
 #endif
