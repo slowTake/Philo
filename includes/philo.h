@@ -6,7 +6,7 @@
 /*   By: pnurmi <pnurmi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/22 11:11:01 by pnurmi            #+#    #+#             */
-/*   Updated: 2025/12/22 11:29:35 by pnurmi           ###   ########.fr       */
+/*   Updated: 2025/12/30 10:49:00 by pnurmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,5 +58,6 @@ int			simulation_finished(t_data *data);
 // 07_utils
 long long	get_current_time_ms(void);
 int			print_status(t_data *data, int philo_id, const char *status);
+void 		wait_for_threads(t_data *data);
 
 #endif

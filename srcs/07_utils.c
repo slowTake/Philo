@@ -6,7 +6,7 @@
 /*   By: pnurmi <pnurmi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/22 11:08:44 by pnurmi            #+#    #+#             */
-/*   Updated: 2025/12/29 15:12:11 by pnurmi           ###   ########.fr       */
+/*   Updated: 2025/12/30 10:48:57 by pnurmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,17 @@ int	print_status(t_data *data, int philo_id, const char *status)
 		status);
 	pthread_mutex_unlock(&data->print_mutex);
 	return (0);
+}
+
+void	wait_for_threads(t_data *data)
+{
+	int	i;
+
+	i = 0;
+	while (i < data->philo_count)
+	{
+		if (pthread_join(data->philosophers[i].t_id, NULL) != 0)
+			printf("Error joining thread %d\n", i);
+		i++;
+	}
 }

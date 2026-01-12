@@ -6,24 +6,24 @@
 /*   By: pnurmi <pnurmi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/22 11:08:53 by pnurmi            #+#    #+#             */
-/*   Updated: 2025/12/29 15:04:38 by pnurmi           ###   ########.fr       */
+/*   Updated: 2025/12/30 10:49:09 by pnurmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	wait_for_threads(t_data *data)
-{
-	int	i;
+// void	wait_for_threads(t_data *data)
+// {
+// 	int	i;
 
-	i = 0;
-	while (i < data->philo_count)
-	{
-		if (pthread_join(data->philosophers[i].t_id, NULL) != 0)
-			printf("Error joining thread %d\n", i);
-		i++;
-	}
-}
+// 	i = 0;
+// 	while (i < data->philo_count)
+// 	{
+// 		if (pthread_join(data->philosophers[i].t_id, NULL) != 0)
+// 			printf("Error joining thread %d\n", i);
+// 		i++;
+// 	}
+// }
 
 int	execution_main(t_data *data)
 {

@@ -6,7 +6,7 @@
 /*   By: pnurmi <pnurmi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/22 11:09:00 by pnurmi            #+#    #+#             */
-/*   Updated: 2025/12/22 11:09:03 by pnurmi           ###   ########.fr       */
+/*   Updated: 2025/12/30 10:33:26 by pnurmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,11 @@ int	err_msg(const char *str)
 int	err_invalid(void)
 {
 	printf("\nPlease enter valid params:");
-	printf("\n           Number of philosphers");
-	printf("\n           Time to die");
-	printf("\n           Time to eat");
-	printf("\n           Time to sleep");
-	printf("\n           Number of meals to eat (optional)");
+	printf("\n  -Number of philosphers");
+	printf("\n  -Time to die");
+	printf("\n  -Time to eat");
+	printf("\n  -Time to sleep");
+	printf("\n  -Number of meals to eat (optional)");
 	return (1);
 }
 
