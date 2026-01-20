@@ -6,7 +6,7 @@
 /*   By: pnurmi <pnurmi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/22 11:11:05 by pnurmi            #+#    #+#             */
-/*   Updated: 2025/12/22 11:26:30 by pnurmi           ###   ########.fr       */
+/*   Updated: 2026/01/20 14:22:54 by pnurmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,5 @@ typedef struct s_data
 	pthread_mutex_t	data_mutex;
 	t_philo			*philosophers;
 }					t_data;
-
-/* error types removed */
 
 #endif
