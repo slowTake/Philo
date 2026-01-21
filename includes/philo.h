@@ -6,26 +6,28 @@
 /*   By: pnurmi <pnurmi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/22 11:11:01 by pnurmi            #+#    #+#             */
-/*   Updated: 2026/01/20 14:21:43 by pnurmi           ###   ########.fr       */
+/*   Updated: 2026/01/21 13:52:52 by pnurmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHILO_H
 # define PHILO_H
 
+# include "structs.h"
 # include <limits.h>
 # include <pthread.h>
 # include <stdio.h>
 # include <stdlib.h>
+# include <string.h>
 # include <sys/time.h>
 # include <unistd.h>
-# include "structs.h"
+# include <stdint.h>
 
 // 01_parsing
 int			parsing(int argc, char **argv, t_data *data);
 int			input_validation(int argc, char **argv);
 int			input_assignment(int argc, char **argv, t_data *data);
-long			ft_strtol(const char *str);
+long		ft_strtol(const char *str);
 
 // 02 Execution
 int			execution_main(t_data *data);
@@ -56,6 +58,6 @@ int			simulation_finished(t_data *data);
 // 07_utils
 long long	get_current_time_ms(void);
 int			print_status(t_data *data, int philo_id, const char *status);
-void 		wait_for_threads(t_data *data);
+void		wait_for_threads(t_data *data);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: pnurmi <pnurmi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/22 11:08:53 by pnurmi            #+#    #+#             */
-/*   Updated: 2025/12/30 10:49:09 by pnurmi           ###   ########.fr       */
+/*   Updated: 2026/01/21 13:09:11 by pnurmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ void	monitor(t_data *data)
 			pthread_mutex_unlock(&data->data_mutex);
 			return ;
 		}
-		usleep(1000);
+		usleep(500);
 	}
 }
 
@@ -129,14 +129,36 @@ void	take_forks(t_philo *philo)
 	{
 		pthread_mutex_lock(philo->right_fork);
 		print_status(philo->data, philo->p_id, "has taken a fork");
+		if (simulation_finished(philo->data))
+		{
+			pthread_mutex_unlock(philo->right_fork);
+			return ;
+		}
 		pthread_mutex_lock(philo->left_fork);
+		if (simulation_finished(philo->data))
+		{
+			pthread_mutex_unlock(philo->left_fork);
+			pthread_mutex_unlock(philo->right_fork);
+			return ;
+		}
 		print_status(philo->data, philo->p_id, "has taken a fork");
 	}
 	else
 	{
 		pthread_mutex_lock(philo->left_fork);
 		print_status(philo->data, philo->p_id, "has taken a fork");
+		if (simulation_finished(philo->data))
+		{
+			pthread_mutex_unlock(philo->left_fork);
+			return ;
+		}
 		pthread_mutex_lock(philo->right_fork);
+		if (simulation_finished(philo->data))
+		{
+			pthread_mutex_unlock(philo->right_fork);
+			pthread_mutex_unlock(philo->left_fork);
+			return ;
+		}
 		print_status(philo->data, philo->p_id, "has taken a fork");
 	}
 }
