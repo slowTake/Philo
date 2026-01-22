@@ -6,24 +6,11 @@
 /*   By: pnurmi <pnurmi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/22 11:08:53 by pnurmi            #+#    #+#             */
-/*   Updated: 2026/01/21 13:09:11 by pnurmi           ###   ########.fr       */
+/*   Updated: 2026/01/22 08:17:34 by pnurmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
-
-// void	wait_for_threads(t_data *data)
-// {
-// 	int	i;
-
-// 	i = 0;
-// 	while (i < data->philo_count)
-// 	{
-// 		if (pthread_join(data->philosophers[i].t_id, NULL) != 0)
-// 			printf("Error joining thread %d\n", i);
-// 		i++;
-// 	}
-// }
 
 int	execution_main(t_data *data)
 {
@@ -59,22 +46,24 @@ int	init_resources(t_data *data)
 
 int	init_threads(t_data *data)
 {
-	int	i;
+    int	i;
 
-	i = 0;
-	data->start_time = get_current_time_ms();
-	while (i < data->philo_count)
-	{
-		if (pthread_create(&data->philosophers[i].t_id, NULL, &philo_routine,
-				&data->philosophers[i]) != 0)
-		{
-			cleanup_threads(data, i);
-			return (1);
-		}
-		data->philosophers[i].last_meal_time = data->start_time;
-		i++;
-	}
-	return (0);
+    i = 0;
+    data->start_time = get_current_time_ms();
+    while (i < data->philo_count)
+    {
+        if (pthread_create(&data->philosophers[i].t_id, NULL, &philo_routine,
+                &data->philosophers[i]) != 0)
+        {
+            cleanup_threads(data, i);
+            return (1);
+        }
+        pthread_mutex_lock(&data->data_mutex);
+        data->philosophers[i].last_meal_time = data->start_time;
+        pthread_mutex_unlock(&data->data_mutex);
+        i++;
+    }
+    return (0);
 }
 
 void	monitor(t_data *data)
@@ -89,8 +78,7 @@ void	monitor(t_data *data)
 		while (i < data->philo_count)
 		{
 			pthread_mutex_lock(&data->data_mutex);
-			if (get_current_time_ms()
-				- data->philosophers[i].last_meal_time > data->time_to_die)
+			if (get_current_time_ms() - data->philosophers[i].last_meal_time > data->time_to_die)
 			{
 				data->stop_flag = 1;
 				pthread_mutex_unlock(&data->data_mutex);

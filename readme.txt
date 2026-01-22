@@ -85,3 +85,9 @@ atomic
 if philo full
 last eat time
 philo count
+
+
+
+tests
+============
+ % valgrind --tool=helgrind ./philo 5 800 200 200 7

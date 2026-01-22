@@ -29,12 +29,13 @@ void	cleanup_mutexes(t_data *data, int mutexes)
 		j++;
 	}
 	pthread_mutex_destroy(&data->print_mutex);
+	pthread_mutex_destroy(&data->data_mutex);
 }
 
 void	cleanup_data(t_data *data)
 {
-	cleanup_philos(data);
-	cleanup_mutexes(data, data->philo_count);
+    cleanup_mutexes(data, data->philo_count);
+    cleanup_philos(data);
 }
 
 void	cleanup_threads(t_data *data, int i)
