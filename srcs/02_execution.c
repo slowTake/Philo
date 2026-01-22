@@ -6,7 +6,7 @@
 /*   By: pnurmi <pnurmi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/22 11:08:53 by pnurmi            #+#    #+#             */
-/*   Updated: 2026/01/22 14:07:54 by pnurmi           ###   ########.fr       */
+/*   Updated: 2026/01/22 14:34:04 by pnurmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,9 +94,11 @@ void	*philo_routine(void *arg)
 		print_status(data, philo->p_id, "is eating");
 		update_last_meal_time(philo);
 		usleep(data->time_to_eat * 1000);
+		//add death check
 		put_forks(philo);
 		print_status(data, philo->p_id, "is sleeping");
 		usleep(data->time_to_sleep * 1000);
+		//add death check
 	}
 	return (NULL);
 }
