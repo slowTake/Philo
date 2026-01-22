@@ -6,13 +6,13 @@
 /*   By: pnurmi <pnurmi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/22 16:26:28 by pnurmi            #+#    #+#             */
-/*   Updated: 2026/01/22 16:54:22 by pnurmi           ###   ########.fr       */
+/*   Updated: 2026/01/22 17:00:21 by pnurmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-static int eating(t_philo *philo, t_data *data)
+static int	eating(t_philo *philo, t_data *data)
 {
 	long	total_time;
 	int		i;
@@ -30,7 +30,7 @@ static int eating(t_philo *philo, t_data *data)
 	return (0);
 }
 
-static int thinking(t_philo *philo, t_data *data)
+static int	thinking(t_philo *philo, t_data *data)
 {
 	long	think_time;
 	int		i;
@@ -51,7 +51,7 @@ static int thinking(t_philo *philo, t_data *data)
 	return (0);
 }
 
-static int sleeping(t_data *data)
+static int	sleeping(t_data *data)
 {
 	long	sleep_time;
 	int		i;
