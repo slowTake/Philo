@@ -6,7 +6,7 @@
 /*   By: pnurmi <pnurmi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/22 11:08:53 by pnurmi            #+#    #+#             */
-/*   Updated: 2026/01/22 13:52:54 by pnurmi           ###   ########.fr       */
+/*   Updated: 2026/01/22 14:07:54 by pnurmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,89 +46,24 @@ int	init_resources(t_data *data)
 
 int	init_threads(t_data *data)
 {
-    int	i;
+	int	i;
 
-    i = 0;
-    data->start_time = get_current_time_ms();
-    while (i < data->philo_count)
-    {
-        if (pthread_create(&data->philosophers[i].t_id, NULL, &philo_routine,
-                &data->philosophers[i]) != 0)
-        {
-            cleanup_threads(data, i);
-            return (1);
-        }
-        pthread_mutex_lock(&data->data_mutex);
-        data->philosophers[i].last_meal_time = data->start_time;
-        pthread_mutex_unlock(&data->data_mutex);
-        i++;
-    }
-    return (0);
-}
-
-
-
-void	take_forks(t_philo *philo)
-{
-	if (philo->data->philo_count == 1)
+	i = 0;
+	data->start_time = get_current_time_ms();
+	while (i < data->philo_count)
 	{
-		pthread_mutex_lock(philo->left_fork);
-		print_status(philo->data, philo->p_id, "has taken a fork");
-		while (simulation_finished(philo->data) == 0)
-			usleep(100);
-		pthread_mutex_unlock(philo->left_fork);
-		return ;
-	}
-	if (philo->p_id % 2 == 0)
-	{
-		pthread_mutex_lock(philo->right_fork);
-		print_status(philo->data, philo->p_id, "has taken a fork");
-		if (simulation_finished(philo->data))
+		if (pthread_create(&data->philosophers[i].t_id, NULL, &philo_routine,
+				&data->philosophers[i]) != 0)
 		{
-			pthread_mutex_unlock(philo->right_fork);
-			return ;
+			cleanup_threads(data, i);
+			return (1);
 		}
-		pthread_mutex_lock(philo->left_fork);
-		if (simulation_finished(philo->data))
-		{
-			pthread_mutex_unlock(philo->left_fork);
-			pthread_mutex_unlock(philo->right_fork);
-			return ;
-		}
-		print_status(philo->data, philo->p_id, "has taken a fork");
+		pthread_mutex_lock(&data->data_mutex);
+		data->philosophers[i].last_meal_time = data->start_time;
+		pthread_mutex_unlock(&data->data_mutex);
+		i++;
 	}
-	else
-	{
-		pthread_mutex_lock(philo->left_fork);
-		print_status(philo->data, philo->p_id, "has taken a fork");
-		if (simulation_finished(philo->data))
-		{
-			pthread_mutex_unlock(philo->left_fork);
-			return ;
-		}
-		pthread_mutex_lock(philo->right_fork);
-		if (simulation_finished(philo->data))
-		{
-			pthread_mutex_unlock(philo->right_fork);
-			pthread_mutex_unlock(philo->left_fork);
-			return ;
-		}
-		print_status(philo->data, philo->p_id, "has taken a fork");
-	}
-}
-
-void	put_forks(t_philo *philo)
-{
-	if (philo->p_id % 2 == 0)
-	{
-		pthread_mutex_unlock(philo->left_fork);
-		pthread_mutex_unlock(philo->right_fork);
-	}
-	else
-	{
-		pthread_mutex_unlock(philo->right_fork);
-		pthread_mutex_unlock(philo->left_fork);
-	}
+	return (0);
 }
 
 void	update_last_meal_time(t_philo *philo)

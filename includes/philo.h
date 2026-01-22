@@ -6,7 +6,7 @@
 /*   By: pnurmi <pnurmi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/22 11:11:01 by pnurmi            #+#    #+#             */
-/*   Updated: 2026/01/21 13:52:52 by pnurmi           ###   ########.fr       */
+/*   Updated: 2026/01/22 14:05:49 by pnurmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,12 @@
 # include "structs.h"
 # include <limits.h>
 # include <pthread.h>
+# include <stdint.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
 # include <sys/time.h>
 # include <unistd.h>
-# include <stdint.h>
 
 // 01_parsing
 int			parsing(int argc, char **argv, t_data *data);
@@ -59,5 +59,9 @@ int			simulation_finished(t_data *data);
 long long	get_current_time_ms(void);
 int			print_status(t_data *data, int philo_id, const char *status);
 void		wait_for_threads(t_data *data);
+
+// 09_forks
+void		take_forks(t_philo *philo);
+void		put_forks(t_philo *philo);
 
 #endif

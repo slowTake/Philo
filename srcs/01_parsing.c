@@ -6,7 +6,7 @@
 /*   By: pnurmi <pnurmi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/22 11:08:51 by pnurmi            #+#    #+#             */
-/*   Updated: 2025/12/29 11:13:58 by pnurmi           ###   ########.fr       */
+/*   Updated: 2026/01/22 14:08:02 by pnurmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,6 @@ long	ft_strtol(const char *str)
 
 	res = 0;
 	i = 0;
-
 	while (str[i] == ' ' || str[i] == '\t')
 		i++;
 	if (str[i] == '+')

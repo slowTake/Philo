@@ -20,7 +20,8 @@ SRC     := srcs/00_main.c \
            srcs/05_error.c \
            srcs/06_cleanup.c \
            srcs/07_utils.c \
-		   srcs/08_monitor.c
+		   srcs/08_monitor.c \
+		   srcs/09_forks.c
 
 # Object files
 OBJ     := $(SRC:srcs/%.c=$(OBJDIR)/%.o)

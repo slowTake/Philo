@@ -6,7 +6,7 @@
 /*   By: pnurmi <pnurmi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/22 11:09:00 by pnurmi            #+#    #+#             */
-/*   Updated: 2025/12/30 10:33:26 by pnurmi           ###   ########.fr       */
+/*   Updated: 2026/01/22 14:08:09 by pnurmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,4 +28,3 @@ int	err_invalid(void)
 	printf("\n  -Number of meals to eat (optional)");
 	return (1);
 }
-

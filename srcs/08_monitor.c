@@ -6,7 +6,7 @@
 /*   By: pnurmi <pnurmi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/22 13:57:22 by pnurmi            #+#    #+#             */
-/*   Updated: 2026/01/22 14:00:24 by pnurmi           ###   ########.fr       */
+/*   Updated: 2026/01/22 14:08:22 by pnurmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 static int	check_philosopher_death(t_data *data, int i)
 {
 	pthread_mutex_lock(&data->data_mutex);
-	if (get_current_time_ms() - data->philosophers[i].last_meal_time > data->time_to_die)
+	if (get_current_time_ms()
+		- data->philosophers[i].last_meal_time > data->time_to_die)
 	{
 		data->stop_flag = 1;
 		pthread_mutex_unlock(&data->data_mutex);
