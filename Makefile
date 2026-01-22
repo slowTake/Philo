@@ -2,8 +2,8 @@
 CC      := cc
 CFLAGS  := -g -Wall -Wextra -Werror -Iincludes -pthread 
 
-tsan: CFLAGS += -g3 -fsanitize=thread
-tsan: re
+# tsan: CFLAGS += -g3 -fsanitize=thread
+# tsan: re
 
 # Directories
 OBJDIR  := objs
@@ -19,7 +19,8 @@ SRC     := srcs/00_main.c \
            srcs/04_memory.c \
            srcs/05_error.c \
            srcs/06_cleanup.c \
-           srcs/07_utils.c 
+           srcs/07_utils.c \
+		   srcs/08_monitor.c
 
 # Object files
 OBJ     := $(SRC:srcs/%.c=$(OBJDIR)/%.o)

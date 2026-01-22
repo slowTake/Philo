@@ -6,7 +6,7 @@
 /*   By: pnurmi <pnurmi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/22 11:08:53 by pnurmi            #+#    #+#             */
-/*   Updated: 2026/01/22 08:17:34 by pnurmi           ###   ########.fr       */
+/*   Updated: 2026/01/22 13:52:54 by pnurmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,41 +66,7 @@ int	init_threads(t_data *data)
     return (0);
 }
 
-void	monitor(t_data *data)
-{
-	int	i;
-	int	finished_meals;
 
-	while (1)
-	{
-		finished_meals = 0;
-		i = 0;
-		while (i < data->philo_count)
-		{
-			pthread_mutex_lock(&data->data_mutex);
-			if (get_current_time_ms() - data->philosophers[i].last_meal_time > data->time_to_die)
-			{
-				data->stop_flag = 1;
-				pthread_mutex_unlock(&data->data_mutex);
-				print_status(data, data->philosophers[i].p_id, "died");
-				return ;
-			}
-			if (data->meals_to_eat > 0
-				&& data->philosophers[i].meals_eaten >= data->meals_to_eat)
-				finished_meals++;
-			pthread_mutex_unlock(&data->data_mutex);
-			i++;
-		}
-		if (data->meals_to_eat > 0 && finished_meals == data->philo_count)
-		{
-			pthread_mutex_lock(&data->data_mutex);
-			data->stop_flag = 1;
-			pthread_mutex_unlock(&data->data_mutex);
-			return ;
-		}
-		usleep(500);
-	}
-}
 
 void	take_forks(t_philo *philo)
 {
