@@ -6,7 +6,7 @@
 /*   By: pnurmi <pnurmi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/22 11:08:53 by pnurmi            #+#    #+#             */
-/*   Updated: 2026/01/22 14:34:04 by pnurmi           ###   ########.fr       */
+/*   Updated: 2026/01/22 16:26:49 by pnurmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,33 +72,4 @@ void	update_last_meal_time(t_philo *philo)
 	philo->last_meal_time = get_current_time_ms();
 	philo->meals_eaten++;
 	pthread_mutex_unlock(&philo->data->data_mutex);
-}
-
-void	*philo_routine(void *arg)
-{
-	t_philo	*philo;
-	t_data	*data;
-
-	philo = (t_philo *)arg;
-	data = philo->data;
-	if (philo->p_id % 2 == 0)
-		usleep(1500);
-	while (simulation_finished(data) == 0)
-	{
-		print_status(data, philo->p_id, "is thinking");
-		if (data->philo_count % 2 != 0)
-			usleep(500);
-		take_forks(philo);
-		if (simulation_finished(data) != 0)
-			break ;
-		print_status(data, philo->p_id, "is eating");
-		update_last_meal_time(philo);
-		usleep(data->time_to_eat * 1000);
-		//add death check
-		put_forks(philo);
-		print_status(data, philo->p_id, "is sleeping");
-		usleep(data->time_to_sleep * 1000);
-		//add death check
-	}
-	return (NULL);
 }

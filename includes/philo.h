@@ -6,7 +6,7 @@
 /*   By: pnurmi <pnurmi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/22 11:11:01 by pnurmi            #+#    #+#             */
-/*   Updated: 2026/01/22 14:05:49 by pnurmi           ###   ########.fr       */
+/*   Updated: 2026/01/22 16:30:26 by pnurmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int			init_resources(t_data *data);
 int			init_threads(t_data *data);
 void		monitor(t_data *data);
 void		*philo_routine(void *arg);
+void		update_last_meal_time(t_philo *philo);
 
 // 03_mutexes
 int			init_fork(t_data *data);

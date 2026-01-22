@@ -6,7 +6,7 @@
 /*   By: pnurmi <pnurmi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/22 13:57:22 by pnurmi            #+#    #+#             */
-/*   Updated: 2026/01/22 14:44:36 by pnurmi           ###   ########.fr       */
+/*   Updated: 2026/01/22 15:53:13 by pnurmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static int	count_finished_meals(t_data *data)
 	while (i < data->philo_count)
 	{
 		if (check_philosopher_death(data, i))
-				return -1;
+			return (-1);
 		pthread_mutex_lock(&data->data_mutex);
 		if (data->meals_to_eat > 0
 			&& data->philosophers[i].meals_eaten >= data->meals_to_eat)
@@ -73,7 +73,7 @@ void	monitor(t_data *data)
 			i++;
 		}
 		finished_meals = count_finished_meals(data);
-		if(finished_meals == -1)
+		if (finished_meals == -1)
 			return ;
 		check_all_finished(data, finished_meals);
 		if (data->stop_flag)
