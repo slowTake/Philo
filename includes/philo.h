@@ -6,7 +6,7 @@
 /*   By: pnurmi <pnurmi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/22 11:11:01 by pnurmi            #+#    #+#             */
-/*   Updated: 2026/01/22 16:30:26 by pnurmi           ###   ########.fr       */
+/*   Updated: 2026/01/22 17:50:56 by pnurmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int			print_status(t_data *data, int philo_id, const char *status);
 void		wait_for_threads(t_data *data);
 
 // 09_forks
-void		take_forks(t_philo *philo);
+int			take_forks(t_philo *philo);
 void		put_forks(t_philo *philo);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: pnurmi <pnurmi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/22 16:26:28 by pnurmi            #+#    #+#             */
-/*   Updated: 2026/01/22 17:00:21 by pnurmi           ###   ########.fr       */
+/*   Updated: 2026/01/22 17:50:56 by pnurmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ static int	eating(t_philo *philo, t_data *data)
 	update_last_meal_time(philo);
 	total_time = data->time_to_eat * 1000;
 	i = 0;
-	while (i < 10)
+	while (i < 5)
 	{
-		usleep(total_time / 10);
+		usleep(total_time / 5);
 		if (simulation_finished(data))
 			return (1);
 		i++;
@@ -41,9 +41,9 @@ static int	thinking(t_philo *philo, t_data *data)
 	if (data->philo_count % 2 != 0)
 		think_time = 500;
 	i = 0;
-	while (i < 10)
+	while (i < 5)
 	{
-		usleep(think_time / 10);
+		usleep(think_time / 5);
 		if (simulation_finished(data))
 			return (1);
 		i++;
@@ -58,9 +58,9 @@ static int	sleeping(t_data *data)
 
 	sleep_time = data->time_to_sleep * 1000;
 	i = 0;
-	while (i < 10)
+	while (i < 5)
 	{
-		usleep(sleep_time / 10);
+		usleep(sleep_time / 5);
 		if (simulation_finished(data))
 			return (1);
 		i++;
@@ -80,18 +80,18 @@ void	*philo_routine(void *arg)
 		print_status(philo->data, philo->p_id, "is thinking");
 		if (thinking(philo, philo->data))
 			break ;
-		take_forks(philo);
-		if (simulation_finished(philo->data))
-			break ;
-		print_status(philo->data, philo->p_id, "is eating");
-		if (eating(philo, philo->data))
+		if (!take_forks(philo))
 		{
+			print_status(philo->data, philo->p_id, "is eating");
+			if (eating(philo, philo->data))
+			{
+				put_forks(philo);
+				break ;
+			}
 			put_forks(philo);
-			break ;
+			print_status(philo->data, philo->p_id, "is sleeping");
+			sleeping(philo->data);
 		}
-		put_forks(philo);
-		print_status(philo->data, philo->p_id, "is sleeping");
-		sleeping(philo->data);
 	}
 	return (NULL);
 }

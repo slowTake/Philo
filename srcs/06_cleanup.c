@@ -6,7 +6,7 @@
 /*   By: pnurmi <pnurmi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/22 11:09:04 by pnurmi            #+#    #+#             */
-/*   Updated: 2026/01/22 14:08:15 by pnurmi           ###   ########.fr       */
+/*   Updated: 2026/01/22 17:44:41 by pnurmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void	cleanup_mutexes(t_data *data, int mutexes)
 
 void	cleanup_data(t_data *data)
 {
+	// usleep(2000);
 	cleanup_mutexes(data, data->philo_count);
 	cleanup_philos(data);
 }
