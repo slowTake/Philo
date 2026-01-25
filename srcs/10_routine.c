@@ -6,18 +6,17 @@
 /*   By: pnurmi <pnurmi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/22 16:26:28 by pnurmi            #+#    #+#             */
-/*   Updated: 2026/01/22 17:50:56 by pnurmi           ###   ########.fr       */
+/*   Updated: 2026/01/25 12:54:26 by pnurmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-static int	eating(t_philo *philo, t_data *data)
+static int	eating(t_data *data)
 {
 	long	total_time;
 	int		i;
 
-	update_last_meal_time(philo);
 	total_time = data->time_to_eat * 1000;
 	i = 0;
 	while (i < 5)
@@ -30,16 +29,12 @@ static int	eating(t_philo *philo, t_data *data)
 	return (0);
 }
 
-static int	thinking(t_philo *philo, t_data *data)
+static int	thinking(t_data *data)
 {
 	long	think_time;
 	int		i;
 
-	think_time = 500;
-	if (philo->p_id % 2 == 0)
-		think_time = 1500;
-	if (data->philo_count % 2 != 0)
-		think_time = 500;
+	think_time = data->time_to_eat * 1000;
 	i = 0;
 	while (i < 5)
 	{
@@ -71,19 +66,27 @@ static int	sleeping(t_data *data)
 void	*philo_routine(void *arg)
 {
 	t_philo	*philo;
+	long	initial_delay;
 
 	philo = (t_philo *)arg;
-	if (philo->p_id % 2 == 0)
-		usleep(1500);
+	// while (philo->data->start_time >= get_current_time_ms())
+		// usleep(500);
+	if (philo->data->philo_count % 2 != 0)
+	{
+		initial_delay = (philo->p_id * philo->data->time_to_sleep)
+			/ philo->data->philo_count * 100;
+		usleep(initial_delay);
+	}
 	while (simulation_finished(philo->data) == 0)
 	{
 		print_status(philo->data, philo->p_id, "is thinking");
-		if (thinking(philo, philo->data))
+		if (thinking(philo->data))
 			break ;
 		if (!take_forks(philo))
 		{
+			update_last_meal_time(philo);
 			print_status(philo->data, philo->p_id, "is eating");
-			if (eating(philo, philo->data))
+			if (eating(philo->data))
 			{
 				put_forks(philo);
 				break ;
