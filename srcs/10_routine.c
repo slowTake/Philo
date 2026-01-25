@@ -6,7 +6,7 @@
 /*   By: pnurmi <pnurmi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/22 16:26:28 by pnurmi            #+#    #+#             */
-/*   Updated: 2026/01/25 12:54:26 by pnurmi           ###   ########.fr       */
+/*   Updated: 2026/01/25 17:20:44 by pnurmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ static int	eating(t_data *data)
 
 	total_time = data->time_to_eat * 1000;
 	i = 0;
-	while (i < 5)
+	while (i < 3)
 	{
-		usleep(total_time / 5);
+		usleep(total_time / 3);
 		if (simulation_finished(data))
 			return (1);
 		i++;
@@ -29,12 +29,12 @@ static int	eating(t_data *data)
 	return (0);
 }
 
-static int	thinking(t_data *data)
+static int	thinking(t_data *data, t_philo *philo)
 {
 	long	think_time;
 	int		i;
 
-	think_time = data->time_to_eat * 1000;
+	think_time = ((get_current_time_ms() - philo->last_meal_time) / 2);
 	i = 0;
 	while (i < 5)
 	{
@@ -53,9 +53,9 @@ static int	sleeping(t_data *data)
 
 	sleep_time = data->time_to_sleep * 1000;
 	i = 0;
-	while (i < 5)
+	while (i < 3)
 	{
-		usleep(sleep_time / 5);
+		usleep(sleep_time / 3);
 		if (simulation_finished(data))
 			return (1);
 		i++;
@@ -63,24 +63,12 @@ static int	sleeping(t_data *data)
 	return (0);
 }
 
-void	*philo_routine(void *arg)
+static void philo_loop(t_philo *philo)
 {
-	t_philo	*philo;
-	long	initial_delay;
-
-	philo = (t_philo *)arg;
-	// while (philo->data->start_time >= get_current_time_ms())
-		// usleep(500);
-	if (philo->data->philo_count % 2 != 0)
-	{
-		initial_delay = (philo->p_id * philo->data->time_to_sleep)
-			/ philo->data->philo_count * 100;
-		usleep(initial_delay);
-	}
 	while (simulation_finished(philo->data) == 0)
 	{
 		print_status(philo->data, philo->p_id, "is thinking");
-		if (thinking(philo->data))
+		if (thinking(philo->data, philo))
 			break ;
 		if (!take_forks(philo))
 		{
@@ -96,5 +84,20 @@ void	*philo_routine(void *arg)
 			sleeping(philo->data);
 		}
 	}
+}
+
+void *philo_routine(void *arg)
+{
+	t_philo	*philo;
+
+	philo = (t_philo *)arg;
+	if (philo->p_id % 2 == 1)
+	{
+		if (philo->data->philo_count == philo->p_id)
+			usleep(1000);
+		else
+			usleep(5700);
+	}
+	philo_loop(philo);
 	return (NULL);
 }
