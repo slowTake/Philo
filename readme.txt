@@ -90,4 +90,13 @@ philo count
 
 tests
 ============
- % valgrind --tool=helgrind ./philo 5 800 200 200 7
+valgrind --tool=helgrind ./philo 5 800 200 200 7
+200 130 60 60
+199 190 60 60
+no deaths
+
+walteri test:
+ ./philo 5 610 200 100 10
+ no deaths
+
+
